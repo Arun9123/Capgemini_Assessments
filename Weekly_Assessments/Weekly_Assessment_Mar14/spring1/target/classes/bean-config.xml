@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- bean definitions here -->
+	<bean name="employee1" class="com.capgemini.spring.Employee">
+	<constructor-arg value="102"></constructor-arg>
+	<constructor-arg value="Arunabha"></constructor-arg>
+	<constructor-arg value="arun@gmail.com"></constructor-arg>
+	<constructor-arg value="50000.00"></constructor-arg>
+	<constructor-arg ref="student"></constructor-arg><!-- reference of student bean -->
+	</bean>
+	<!-- Constructor Injection -->
+	
+	<bean name="student" class="com.capgemini.spring.Student">
+	<property name="id" value="100"></property>
+	<property name="name" value="Arun"></property>
+	<property name="gender" value="Male"></property>
+	<property name="marks" value="100"></property>
+	</bean>
+	<!-- Setter Injection -->
+	
+	<bean name="student1" class="com.capgemini.spring.Student">
+	<property name="id" value="101"></property>
+	<property name="name" value="Arunabha"></property>
+	<property name="gender" value="Male"></property>
+	<property name="marks" value="98"></property>
+	</bean>
+	<!-- Setter Injection -->
+	
+	<bean name="employee" class="com.capgemini.spring.Employee" autowire="byName">
+	<property name="id" value="102"></property>
+	<property name="name" value="Arunabha Dutta"></property>
+	<property name="email" value="adutta@gmail.com"></property>
+	<property name="salary" value="1520000.00"></property>
+<!-- 	<property name="student" ref="student1"></property> reference of student bean -->
+	</bean><!-- Setter Injection -->
+	
+	<bean name="string" class="java.lang.String">
+	<constructor-arg value="Anything"></constructor-arg>
+	</bean>
+</beans>
