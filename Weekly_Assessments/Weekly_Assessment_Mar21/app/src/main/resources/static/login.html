@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>LMS - Login</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div class="card">
+		<h2>Welcome Back</h2>
+		<p class="subtitle">Please enter your details to sign in</p>
+
+		<div class="radio-wrapper">
+			<label><input type="radio" name="loginType" value="email"
+				checked> Email</label> <label><input type="radio"
+				name="loginType" value="username"> Username</label>
+		</div>
+
+		<form id="loginForm">
+			<div class="form-group">
+				<label>Credentials</label> <input type="text" id="identifier"
+					placeholder="Email or Username"> <span id="identifierError"
+					class="error-msg"></span>
+			</div>
+			<div class="form-group">
+				<label>Password</label> <input type="password" id="loginPassword"
+					placeholder="••••••••"> <span id="passwordError"
+					class="error-msg"></span>
+			</div>
+			<button type="button" onclick="handleLogin()">Sign In</button>
+		</form>
+
+		<div class="footer-link">
+			Don't have an account? <a href="registration.html">Create one</a>
+		</div>
+	</div>
+	<script src="js/script.js"></script>
+</body>
+</html>

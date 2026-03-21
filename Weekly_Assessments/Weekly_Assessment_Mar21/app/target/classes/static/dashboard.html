@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS Dashboard | Learning Portal</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        body {
+            display: block; /* Override flex for dashboard layout */
+            background: #f8fafc;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .dashboard-wrapper {
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 260px;
+            background: var(--bg-gradient);
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            color: white;
+            box-shadow: 4px 0 10px rgba(0,0,0,0.1);
+        }
+
+        .sidebar h2 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            text-align: left;
+            padding-left: 10px;
+        }
+
+        .nav-item {
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+
+        /* Main Content Area */
+        .main-content {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .stat-card h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .stat-card p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Content Card */
+        .course-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .course-info h4 { color: var(--text-main); margin-bottom: 5px; }
+        .course-info p { font-size: 0.8rem; color: var(--text-muted); }
+
+        .progress-bar {
+            width: 100px;
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--primary);
+        }
+
+        .btn-logout {
+            margin-top: auto;
+            background: rgba(244, 63, 94, 0.2);
+            color: white;
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-logout:hover {
+            background: #f43f5e;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-wrapper">
+        <aside class="sidebar">
+            <h2>LMS Portal</h2>
+            <div class="nav-item active">🏠 Dashboard</div>
+            <div class="nav-item">📚 My Courses</div>
+            <div class="nav-item">🏆 Certificates</div>
+            <div class="nav-item">⚙️ Settings</div>
+            
+            <div class="btn-logout" onclick="logout()">Logout</div>
+        </aside>
+
+        <main class="main-content">
+            <header class="header">
+                <div>
+                    <span class="welcome-badge" style="margin-bottom: 5px;">Active Session</span>
+                    <h2 style="text-align: left;">Welcome back!</h2>
+                </div>
+                <div class="user-profile">
+                    <div class="user-info" style="text-align: right;">
+                        <div style="font-weight: 600; color: var(--text-main);">Learning Member</div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted);">Student ID: #108</div>
+                    </div>
+                    <div class="avatar">U</div>
+                </div>
+            </header>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>12</h3>
+                    <p>Enrolled Courses</p>
+                </div>
+                <div class="stat-card">
+                    <h3>85%</h3>
+                    <p>Average Score</p>
+                </div>
+                <div class="stat-card">
+                    <h3>4</h3>
+                    <p>Certificates Earned</p>
+                </div>
+                <div class="stat-card">
+                    <h3>24h</h3>
+                    <p>Learning Time</p>
+                </div>
+            </div>
+
+            <h3 style="margin-bottom: 20px; color: var(--text-main);">Current Progress</h3>
+            
+            <div class="course-card">
+                <div class="course-info">
+                    <h4>Full Stack Development with Spring Boot</h4>
+                    <p>Instructor: John Doe • 45 Lessons</p>
+                </div>
+                <div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted); text-align: right; margin-bottom: 5px;">75% Complete</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 75%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="course-card">
+                <div class="course-info">
+                    <h4>Database Management (MySQL)</h4>
+                    <p>Instructor: Jane Smith • 32 Lessons</p>
+                </div>
+                <div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted); text-align: right; margin-bottom: 5px;">40% Complete</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 40%;"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function logout() {
+            // Optional: Show a nice confirmation before leaving
+            if(confirm("Are you sure you want to log out?")) {
+                window.location.href = "/login.html";
+            }
+        }
+    </script>
+</body>
+</html>
